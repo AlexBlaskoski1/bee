@@ -13,6 +13,13 @@ let val_vidas = new Texto()
 let texto_game_over = new Texto()
 let jogar = true
 
+const somElement = document.getElementById('musica');
+somElement.volume = 0.3;
+somElement.play();
+
+const somsElement = document.getElementById('abe');
+somsElement.volume = 0.01;
+somsElement.play();
 // let spider2 = new Obj(0,0,100,100,'darkorchid')
 
 document.addEventListener('keydown', (event)=>{
@@ -45,6 +52,9 @@ document.addEventListener('keyup', (event)=>{
 function game_over(){
     if(bee.vidas <= 0){
         jogar = false
+        const somsElement = document.getElementById('fim');
+somsElement.volume = 100;
+somsElement.play();
     }
 }
 
@@ -52,10 +62,16 @@ function colisao(){
     if(bee.colid(spider)){
         spider.recomeca()
         bee.vidas -=1
+        const somElement = document.getElementById('hit');
+        somElement.volume = 0.1;
+    somElement.play();
     }
     if(bee.colid(flor)){
         flor.recomeca()
         bee.pts +=1
+        const somElement = document.getElementById('item');
+        somElement.volume = 0.1;
+    somElement.play();
     }
 }
 
